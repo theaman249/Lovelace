@@ -2,6 +2,23 @@
 
 # How to Run our System
 
+## Running the PostgreSQL Database (Do first)
+
+**Installing PostgreSQL**
+<p>Postgres is required to be installed on your system</p>
+1. Download PostgreSQL from: https://www.postgresql.org/download. Please install the latest version (15) <br>
+2. Depending on your machine, you can download the any package that suits your needs. <br>
+3. Please ensure that Postgres is running on your system. You might need to restart your machine <br><br>
+
+**Creating the database and tables**
+<p>Go into the directory, backend in the source code and open the terminal there.</p>
+<p>This step also needs you to have npm (nodejs) installed. Please refer to "Running the Backend" subsection</p>
+1. run the command > node database.js. <br>
+2. A message should show in the terminal saying "Database and tables created successfully."<br>
+3. You can use a tool such as PGAdmin 4 or any Database management software tool to verify the database is running.<br>
+4. You can also use one of our test scripts, "test-db-script", to check if the db is running. use command > node test-db-script<br><br>
+
+
 ## Running the Backend (Nodejs)
 
 **installing nodejs** <br>
