@@ -32,4 +32,7 @@
 **> git push origin develop**
 <p>The above command is used to push code from the current local branch to origin develop</p>
 
+**> git pull origin main**
+<p>The above command is used to pull code from the remote main branch to the local current branch</p>
+
 **This was made in my_feature**
