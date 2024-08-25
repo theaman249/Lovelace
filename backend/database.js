@@ -52,23 +52,38 @@ const client = new Client({
         // Example: create a 'users' table
         await clientNew.query(`
             CREATE TABLE IF NOT EXISTS "employees" (
-                id INT,
+                id INT PRIMARY KEY,
                 name VARCHAR(100),
                 surname VARCHAR(100),
                 email VARCHAR(100),
+                password VARCHAR(255),
                 role VARCHAR(10),
                 phone_number VARCHAR(10),
                 birthday DATE 
             );
 
             CREATE TABLE IF NOT EXISTS "hours_logged" (
-                id INT,
+                id INT PRIMARY KEY,
                 log_date DATE,
-                hours NUMERIC,
+                hours_worked NUMERIC,
                 sick BOOLEAN,
-                on_leave BOOLEAN
+                on_leave BOOLEAN,
 
+                employee_id INT REFERENCES "employees"(id)
             );
+
+            CREATE SEQUENCE "employee_seq"
+            START 1
+            INCREMENT 1
+            MINVALUE 1
+            OWNED BY "employees".id;
+
+            CREATE SEQUENCE "hours_logged_seq"
+            START 1
+            INCREMENT 1
+            MINVALUE 1
+            OWNED BY "hours_logged".id;
+
             
         `);
 
@@ -84,6 +99,7 @@ const client = new Client({
             console.log('Database and tables installation unsuccessful.');
         }
 
+        clientNew.end();
         
     } catch (error) {
         console.error('Error:', error);

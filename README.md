@@ -16,7 +16,13 @@
 1. run the command > node database.js. <br>
 2. A message should show in the terminal saying "Database and tables created successfully."<br>
 3. You can use a tool such as PGAdmin 4 or any Database management software tool to verify the database is running.<br>
-4. You can also use one of our test scripts, "test-db-script", to check if the db is running. use command > node test-db-script<br><br>
+4. You can also use one of our test scripts, "test-db-script", to check if the db is running. use command > node test-db-script.js<br><br>
+
+**Populating the database with mock data**
+<p>Go into the directory, backend in the source code and open the terminal there.</p>
+1. run the command > node populate.js <br>
+2. A message should appear in the terminal saying "Entries were successfully inserted" <br>
+3. You can verify the data by using "select * from employees" using any DBMS software tool <br><br>
 
 
 ## Running the Backend (Nodejs)
