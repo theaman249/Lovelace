@@ -1,11 +1,15 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const db = require('./conn'); //import the database module
+const authRoutes = require('./routes/auth');
 
 const app = express();
 const port = 3000;
 
+app.use(express.json());
 app.use(cors());
+app.use('/auth', authRoutes); // Mount routes
 
 app.get('/', (req, res) => {
 
