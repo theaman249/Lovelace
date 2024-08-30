@@ -4,6 +4,8 @@ const router = express.Router();
 const jwt = require('jsonwebtoken');
 const db = require('../conn');
 
+const validator = require('validator');
+
 const Employee = require('../models/employee');
 /**
  * This is the middleware that we will inject on all requests to authenticate
@@ -52,7 +54,8 @@ function verifyAccessToken(token) {
 }
 
 /**
- * This function returns all the hours the user has logged.
+ * This function returns an array of log objects. These objects contain
+ * the dates, times and hours logged.
 */
 router.post('/getHoursLogged',authenticateToken, async(req,res) =>{
     const { email } = req.body;
@@ -83,6 +86,74 @@ router.post('/getHoursLogged',authenticateToken, async(req,res) =>{
     }
 
 });
+
+/**
+ * This function returns an array of log objects. These objects contain
+ * the dates, times and hours logged.
+*/
+router.post('/updateDetails', async (req, res) => {
+    const { name, surname, email,newEmail, phoneNumber, birthday } = req.body;
+
+    try {
+        const user = await Employee.findOne({ where: { email } });
+
+        if (!user) {
+            return res.status(401).json({ error: 'User not found' });
+        }
+
+        const id = user.id;
+
+        // Dynamically build the update query based on the provided fields
+        const fields = [];
+        const values = [];
+        let paramIndex = 1;
+
+        if (name && name != '') {
+            fields.push(`name = $${paramIndex++}`);
+            values.push(name);
+        }
+
+        if (surname && surname != '') {
+            fields.push(`surname = $${paramIndex++}`);
+            values.push(surname);
+        }
+
+        if (phoneNumber && phoneNumber != '') {
+            fields.push(`phone_number = $${paramIndex++}`);
+            values.push(phoneNumber);
+        }
+
+        if (birthday && birthday!= '') {
+            fields.push(`birthday = $${paramIndex++}`);
+            values.push(birthday);
+        }
+
+        if (newEmail && newEmail != "") {
+            fields.push(`email = $${paramIndex++}`);
+            values.push(newEmail);
+        }
+
+        // If there are fields to update, proceed
+        if (fields.length > 0) {
+            const query = `UPDATE employees SET ${fields.join(', ')} WHERE id = $${paramIndex}`;
+            values.push(id);
+            console.log(query);
+
+            await db.query(query, values);
+        }
+        else{
+            console.log('Nothing to update');
+        }
+
+        res.json({ success: 'Details updated successfully' });
+    } catch (error) {
+        console.error('Error updating user details:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
+
+
 
 router.get('/testing',authenticateToken, async(req,res) =>{
     res.status(200).send('user router working');
