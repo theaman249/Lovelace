@@ -79,7 +79,7 @@ router.post('/login', async (req, res) => {
             expiresIn: '1h',
         });
 
-        //res.status(200).json({ token });
+        res.status(200).json({ token });
         console.log('Login successful')
     } 
     catch (error) {
@@ -87,5 +87,6 @@ router.post('/login', async (req, res) => {
         res.status(500).json({ error: 'Login failed' });
     }
 });
+
 
 module.exports = router;
