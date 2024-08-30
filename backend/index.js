@@ -54,3 +54,36 @@ app.get('/getAllEmployees', async (req,res) =>{
 });
 
 
+
+/**
+ * This function returns an employee from the database as a JSON object
+ * It returns their full details: id,name,surname,email,role,phone number,birthay
+*/
+app.post('/getEmployeeVEmail', async (req,res) =>{
+
+  const email = req.body('')
+
+  const query = 'SELECT * FROM employees WHERE email';
+  const errorMessage = 'employees relation not found.';
+
+  try {
+    const { rows } = await db.query(query);
+
+    if (rows.length === 0) {
+      res.status(404).json({ error: errorMessage });
+    } 
+    else {
+      res.json(rows);
+    }
+  } catch (error) {
+    console.error('Error querying the database:', error);
+    res.status(500).send('Internal Server Error');
+  }
+
+
+
+});
+
+
+
+
