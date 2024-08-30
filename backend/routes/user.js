@@ -91,7 +91,7 @@ router.post('/getHoursLogged',authenticateToken, async(req,res) =>{
  * This function returns an array of log objects. These objects contain
  * the dates, times and hours logged.
 */
-router.post('/updateDetails', async (req, res) => {
+router.post('/updateDetails',authenticateToken, async (req, res) => {
     const { name, surname, email,newEmail, phoneNumber, birthday } = req.body;
 
     try {
