@@ -1,1 +1,129 @@
-<p>statistics works!</p>
+<div class="">
+    <header>
+      <div class="navbar bg-base-100">
+        <div class="flex-1">
+          <a class="btn btn-ghost text-xl">Workbench</a>
+        </div>
+        <div class="flex-none gap-2">
+          <div class="form-control">
+            <input type="text" placeholder="Search" class="input input-bordered w-24 md:w-auto" />
+          </div>
+          <div class="dropdown dropdown-end">
+            <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
+              <div class="w-10 rounded-full">
+                <img
+                  alt="Tailwind CSS Navbar component"
+                  src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp" />
+              </div>
+            </div>
+            <ul
+              tabindex="0"
+              class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+              <li>
+                <a class="justify-between">
+                  Profile
+                  <span class="badge">New</span>
+                </a>
+              </li>
+              <li><a>Settings</a></li>
+              <li><a>Logout</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+    
+    <main class="main">
+      <div class="hero bg-base-200 min-h-screen">
+        <div class="hero-content flex-col lg:flex-row-reverse">
+          <div class="stats shadow flex-col lg:flex-row-reverse">
+            <div class="stat">
+              <div class="stat-title">Total working hours this week</div>
+              <div class="stat-value">72</div>
+              <div class="stat-desc">79% of which were productive</div>
+            </div>
+          </div>
+          <img
+            src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
+            class="max-w-sm rounded-lg shadow-2xl" />
+          <div>
+            <h1 class="text-5xl font-bold">Welcome Spiderman</h1>
+            <p class="py-6">
+              How many hours have you worked today?
+            </p>
+            <div class="flex w-full flex-col border-opacity-50">
+              <input type="range" min="0" max="100" value="25" class="range" step="25" />
+                <div class="flex w-full justify-between px-2 text-xs">
+                  <span>|</span>
+                  <span>|</span>
+                  <span>|</span>
+                  <span>|</span>
+                  <span>|</span>
+                </div>
+              <div class="divider">AND</div>
+              <p class="py-6">
+                Of those hours, how many were you productive for?
+              </p>
+              <input type="range" min="0" max="100" value="25" class="range" step="25" />
+    <div class="flex w-full justify-between px-2 text-xs">
+      <span>|</span>
+      <span>|</span>
+      <span>|</span>
+      <span>|</span>
+      <span>|</span>
+    </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    
+      <div class="btm-nav">
+        <button href="/frontend/Workbench/src/app/app.component.html">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+          </svg>
+          <span class="btm-nav-label">Home</span>
+        </button>
+        <button href="/frontend/Workbench/src/app/office-bookings/office-bookings.component.html">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span class="btm-nav-label" href="./frontend/Workbench/src/app/statistics/statistics.component.html">Office bookings</span>
+        </button>
+        <button class="active">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+          </svg>
+          <span class="btm-nav-label">Personal Dashboard</span>
+        </button>
+      </div>
+    </main>
+    </div>
