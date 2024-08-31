@@ -10,7 +10,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { BrowserModule } from "@angular/platform-browser";
 import { AppComponent } from "./app.component";
 
-const routeConfig: Routes = [
+const routes: Routes = [
     {path: 'Home', component: HomeComponent},
     {path: '', component: LoginComponent},
     {path: 'signup', component: SignupComponent},
@@ -20,7 +20,7 @@ const routeConfig: Routes = [
     {path: 'forgot', component: ForgotPasswordComponent},
 ]
 
-NgModule( {
+@NgModule( {
     declarations: [
         HomeComponent,
         LoginComponent,
@@ -32,12 +32,9 @@ NgModule( {
     ],
     imports: [
         BrowserModule,
-        RouterModule.forRoot(routeConfig)
+        RouterModule.forRoot(routes)
     ],
     providers: [],
     bootstrap: [AppComponent]
 })
-
-export default routeConfig;
-
-export const routes: Routes = [];
+export class AppModule{}

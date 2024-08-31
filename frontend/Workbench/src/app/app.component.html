@@ -7,7 +7,7 @@
 <!-- * * * * * * * to get started with your project! * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
-<router-outlet>
+<div class="">
 
 
 <header>
@@ -47,6 +47,13 @@
 <main class="main">
   <div class="hero bg-base-200 min-h-screen">
     <div class="hero-content flex-col lg:flex-row-reverse">
+      <div class="stats shadow flex-col lg:flex-row-reverse">
+        <div class="stat">
+          <div class="stat-title">Total working hours this week</div>
+          <div class="stat-value">72</div>
+          <div class="stat-desc">79% of which were productive</div>
+        </div>
+      </div>
       <img
         src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
         class="max-w-sm rounded-lg shadow-2xl" />
@@ -131,5 +138,7 @@
   </div>
 </main>
 
-
+</div>
+<router-outlet>
+  
 </router-outlet>
