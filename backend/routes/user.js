@@ -93,7 +93,7 @@ router.post('/getHoursLogged',authenticateToken, async(req,res) =>{
 */
 router.post('/updateDetails',authenticateToken, async (req, res) => {
     const { name, surname, email,newEmail, phoneNumber, birthday } = req.body;
-
+    
     try {
         const user = await Employee.findOne({ where: { email } });
 
@@ -155,7 +155,7 @@ router.post('/updateDetails',authenticateToken, async (req, res) => {
 
 
 
-router.get('/testing',authenticateToken, async(req,res) =>{
+router.get('/testing',authenticateToken,async(req,res) =>{
     res.status(200).send('user router working');
 })
 
