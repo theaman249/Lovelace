@@ -5,14 +5,17 @@ const db = require('./conn'); //import the database module
 
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
+const adminRoutes = require('./routes/admin');
 
 const app = express();
+app.use(express.json());
 const port = 3000;
 
 app.use(express.json());
 app.use(cors());
 app.use('/auth', authRoutes); // Mount routes
 app.use('/user', userRoutes);
+app.use('/admin', adminRoutes);
 
 app.get('/', (req, res) => {
 

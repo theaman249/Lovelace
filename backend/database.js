@@ -163,9 +163,9 @@ const { Client } = require('pg');
                 name VARCHAR(100),
                 surname VARCHAR(100),
                 email VARCHAR(100),
-                password VARCHAR(255),
+                password VARCHAR(100),
                 role VARCHAR(10),
-                phone_number VARCHAR(10),
+                phone_number VARCHAR(100),
                 birthday DATE
             );
 
