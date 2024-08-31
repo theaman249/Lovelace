@@ -3,16 +3,23 @@ const router = express.Router();
 const Employee = require('../models/employee');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const secretKey = process.env.JWT_SECRET;
+const jwtKey = process.env.JWT_SECRET;
 const validator = require('validator');
+const crypto = require('crypto');
 
-//Registration
+
 router.post('/register', async (req, res) => {
     try {
         const { name, surname, email, password, role, phone_number, birthday } = req.body;
 
-        // Validate email 
-        if (!validator.isEmail(email)) {
+        const sanitizedName = validator.escape(name.trim());
+        const sanitizedSurname = validator.escape(surname.trim());
+        const sanitizedEmail = validator.normalizeEmail(email);
+        const sanitizedRole = role.trim().toLowerCase();
+        const sanitizedPhoneNumber = validator.trim(phone_number);
+        const sanitizedBirthday = validator.trim(birthday);
+
+        if (!validator.isEmail(sanitizedEmail)) {
             return res.status(400).json({ error: 'Invalid email format' });
         }
 
@@ -21,31 +28,39 @@ router.post('/register', async (req, res) => {
             return res.status(400).json({ error: 'Password too weak' });
         }
      
-        // Validate role
-        if(!['admin', 'employee'].includes(role.toLowerCase())) {
+        if(!['admin', 'employee'].includes(sanitizedRole)) {
             return res.status(400).json({ error: 'Invalid role'});
         }
 
-        // Validate phone number format 
-        if (!validator.isMobilePhone(phone_number)) {
+        if (!validator.isMobilePhone(sanitizedPhoneNumber)) {
             return res.status(400).json({ error: 'Invalid phone number format' });
         }
 
-        // Validate birthday
-        if (!validator.isDate(birthday, { format: 'YYYY-MM-DD'})) {
+        if (!validator.isDate(sanitizedBirthday, { format: 'YYYY-MM-DD'})) {
             return res.status(400).json({ error: 'Invalid date format' });
         }
 
+
         // Check if the user already exists
-        const existingEmail = await Employee.findOne({ where: { email } });
-        const existingNumber = await Employee.findOne({ where: { phone_number } });
+        const existingEmail = await Employee.findOne({ where: { email: sanitizedEmail } });
+        const existingNumber = await Employee.findOne({ where: { phone_number: sanitizedPhoneNumber } });
+
         if (existingEmail || existingNumber) {
             return res.status(400).json({ error: 'User already exists' });
         }
 
-        // Hash the password and create a new user
         const hashedPassword = await bcrypt.hash(password, 10);
-        const user = new Employee({ name, surname, email, password: hashedPassword, role, phone_number, birthday });
+
+        const user = new Employee({ 
+            name: sanitizedName, 
+            surname: sanitizedSurname, 
+            email: sanitizedEmail, 
+            password: hashedPassword, 
+            role: sanitizedRole, 
+            phone_number: sanitizedPhoneNumber,
+            birthday: sanitizedBirthday
+        });
+
         await user.save();
 
         res.status(201).json({ message: 'User registered successfully' });
@@ -56,31 +71,35 @@ router.post('/register', async (req, res) => {
     }
 });
 
-// User login
+
 router.post('/login', async (req, res) => {
     try {
         const { email, password } = req.body;
 
-        // Validate email format
-        if (!validator.isEmail(email)) {
-            return res.status(400).json({ error: 'Invalid email format' });
-        }
-        
-        const user = await Employee.findOne({ where: { email } });
+        const sanitizedEmail = validator.normalizeEmail(email);
 
+        if (!validator.isEmail(sanitizedEmail)) {
+            return res.status(400).json({ error: 'Invalid email' });
+        }
+
+
+        const user = await Employee.findOne({ where: { email: sanitizedEmail }});
+
+        // Check if user was found
         if (!user) {
             return res.status(401).json({ error: 'Authentication failed: User not found' });
         }
-            const passwordMatch = await bcrypt.compare(password, user.password);
+
+        // Check password match
+        const passwordMatch = await bcrypt.compare(password, user.password);
         if (!passwordMatch) {
             return res.status(401).json({ error: 'Authentication failed: Incorrect password' });
         }
-            const token = jwt.sign({ userId: user._id }, secretKey, {
-            expiresIn: '5h',
-        });
 
-        // res.status(200).json({ token });
-        console.log('Login successful')
+        const token = jwt.sign({ email: user.email, role: user.role }, jwtKey, { expiresIn: '5h' });
+        res.status(200).json({ token });
+        console.log('Login successful');
+
     } 
     catch (error) {
         console.log(error);

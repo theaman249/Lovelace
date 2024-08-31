@@ -30,7 +30,7 @@ const Employee = sequelize.define('employees', {
   birthday: {
     type: DataTypes.DATE,
     allowNull: false
-},
+  },
 }, {
   timestamps: false,
   createdAt: false,
