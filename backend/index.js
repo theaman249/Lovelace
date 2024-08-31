@@ -5,6 +5,7 @@ const db = require('./conn'); //import the database module
 const authRoutes = require('./routes/auth');
 
 const app = express();
+app.use(express.json());
 const port = 3000;
 
 app.use(express.json());
