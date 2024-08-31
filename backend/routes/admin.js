@@ -66,16 +66,25 @@ router.post('/updateRole', authenticateToken, async (req, res) => {
     }
 
     try {
-        const user = await Employee.findOne({ where: { email } });
+      const user = await Employee.findOne({ where: { email } });
 
+
+      if(user.role = 'admin')
+      {
         if (!user) {
-            return res.status(401).json({ error: 'User not found' });
+          return res.status(401).json({ error: 'User not found' });
         }
 
         user.role = newRole;
         await user.save();
 
         res.json({ success: 'Role updated successfully' });
+      }
+      else{
+        return res.status(401).json({error:'Forbidden'});
+      }
+
+        
     } catch (error) {
         console.error('Error updating role:', error);
         res.status(500).json({ error: 'Internal server error' });

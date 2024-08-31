@@ -155,7 +155,7 @@ router.post('/updateDetails',authenticateToken, async (req, res) => {
 router.post('/setHours', async(req,res) =>{
 
     const { email,hours,date,sick,on_leave} = req.body;
-    console.log(req.body);
+    //console.log(req.body);
 
     if(email === undefined){
         return res.status(401).json({error:'user not found'});
