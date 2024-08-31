@@ -24,9 +24,9 @@ const client = new Client({
             INSERT INTO employees
                 (id,name,surname,email,password,role,phone_number,birthday)
             VALUES
-                (nextval('employee_seq'),'Jensen','Huang','jensen@workbench.co.za','Password@123','user','0792726980','1993-04-05'),
+                (nextval('employee_seq'),'Jensen','Huang','jensen@workbench.co.za','Password@123','admin','0792726980','1993-04-05'),
                 (nextval('employee_seq'),'Ada','Lovelace','ada@workbench.co.za','Secure@123','admin','0786369895','1815-12-10'),
-                (nextval('employee_seq'),'Stephan','Grunner','profg@workbench.co.za','algorith@123','user','0812567896','1946-08-11');
+                (nextval('employee_seq'),'Stephan','Grunner','profg@workbench.co.za','algorith@123','admin','0812567896','1946-08-11');
 
             INSERT INTO hours_logged
                 (id,log_date,hours_worked,sick,on_leave,employee_id)

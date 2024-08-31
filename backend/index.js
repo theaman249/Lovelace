@@ -2,7 +2,9 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const db = require('./conn'); //import the database module
+
 const authRoutes = require('./routes/auth');
+const userRoutes = require('./routes/user');
 
 const app = express();
 app.use(express.json());
@@ -11,6 +13,7 @@ const port = 3000;
 app.use(express.json());
 app.use(cors());
 app.use('/auth', authRoutes); // Mount routes
+app.use('/user', userRoutes);
 
 app.get('/', (req, res) => {
 
@@ -25,9 +28,6 @@ app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
 });
 
-
-
-/////////////////////////DB API FUNCTIONS/////////////////////////////////
 
 /**
  * This function returns all employees from the database as a JSON array
@@ -53,5 +53,8 @@ app.get('/getAllEmployees', async (req,res) =>{
   }
 
 });
+
+
+
 
 

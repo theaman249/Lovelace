@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "apexcharts": "^3.52.0",
-    "cors": "^2.8.5"
-  }
-}
