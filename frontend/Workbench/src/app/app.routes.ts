@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { OfficeBookingsComponent } from './office-bookings/office-bookings.component';
+// import { OfficeBookingsComponent } from './office-bookings/office-bookings.component';
 
 const routeConfig: Routes = [];
 
