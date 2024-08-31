@@ -96,7 +96,7 @@ router.post('/login', async (req, res) => {
             return res.status(401).json({ error: 'Authentication failed: Incorrect password' });
         }
 
-        const token = jwt.sign({ email: user.email, role: user.role }, jwtKey, { expiresIn: '1h' });
+        const token = jwt.sign({ email: user.email, role: user.role }, jwtKey, { expiresIn: '5h' });
         res.status(200).json({ token });
         console.log('Login successful');
 
