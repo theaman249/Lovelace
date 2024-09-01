@@ -152,6 +152,51 @@ router.post('/updateDetails',authenticateToken, async (req, res) => {
     }
 });
 
+router.post('/setHours', async(req,res) =>{
+
+    const { email,hours,date,sick,on_leave} = req.body;
+    //console.log(req.body);
+
+    if(email === undefined){
+        return res.status(401).json({error:'user not found'});
+    }
+
+    if(on_leave === "")
+        on_leave =false;
+
+    if(sick === "")
+        sick = false;
+
+    const user = await Employee.findOne({ where: { email } });
+
+    if (!user) {
+        return res.status(401).json({ error: 'User not found' });
+    }
+    else{
+        id = user.id;
+
+        const query = `
+            INSERT INTO hours_logged
+                (id,log_date,hours_worked,sick,on_leave,employee_id)
+            VALUES
+                (nextval('hours_logged_seq'),'${date}',${hours},${sick},${on_leave},${id});
+
+        `
+
+        try {
+            
+            await db.query(query);
+        
+            res.status(200).json({success:'user hours logged'});
+
+        } catch (error) {
+            console.error('Error querying the database:', error);
+            res.status(500).send('Internal Server Error');
+        }
+    }
+
+});
+
 
 
 
