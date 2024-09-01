@@ -13,7 +13,7 @@ router.post('/register', async (req, res) => {
     try {
         const { name, surname, email, password, role, phone_number, birthday } = req.body;
 
-        console.log(req.body);
+        //console.log(req.body);
 
         const sanitizedName = validator.escape(name.trim());
         const sanitizedSurname = validator.escape(surname.trim());
