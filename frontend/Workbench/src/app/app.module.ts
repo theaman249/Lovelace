@@ -8,15 +8,23 @@ import { ForgotPasswordComponent } from "./forgot-password/forgot-password.compo
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { AppComponent } from "./app.component";
-//import { AppRoutingModule } from "./app-routing.module";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CookieModule } from "ngx-cookie";
+import { HttpClientModule } from "@angular/common/http";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
 
 @NgModule( {
     declarations: [
-        AppComponent
+        AppComponent,
+        LoginComponent
     ],
     imports: [
         BrowserModule,
-        //AppRoutingModule
+        ReactiveFormsModule,
+        FormsModule,
+        CookieModule.withOptions(),
+        HttpClientModule,
+        MatSnackBarModule
     ],
     providers: [],
     bootstrap: [AppComponent]
