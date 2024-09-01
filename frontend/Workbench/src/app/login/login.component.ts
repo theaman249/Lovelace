@@ -65,11 +65,17 @@ export class LoginComponent {
         result = await this.authService.loginUser(email, password);
         
         if (result.message === 'login successful') {
-          console.log('Success');
+          //console.log('Success');
 
-          
-          
+          this.setCookie("jwt",result.token,1);
+          this.setCookie("name",result.name,1);
+          this.setCookie("surname",result.surname,1);
+          this.setCookie("email",result.email,1);
+          this.setCookie("birthday",result.birthday,1);
+          this.setCookie("role",result.role,1);
+
           this.router.navigate(['Home']);
+
 
         } else {
           this.snackBar.open('Login failed: ' + result.message);
@@ -90,6 +96,14 @@ export class LoginComponent {
         this.snackBar.dismiss();
       }, 5000);
     }
+  }
+
+
+  setCookie(name: string, value: string, days: number) {
+    const date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000)); // Convert days to milliseconds
+    const expires = `expires=${date.toUTCString()}`;
+    document.cookie = `${name}=${value};${expires};path=/`;
   }
   
   

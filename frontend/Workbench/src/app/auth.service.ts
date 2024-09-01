@@ -21,7 +21,10 @@ export class AuthService {
 
     return this.http.post<any>(url, body).toPromise()
     .then(res => {
-      return new User(
+
+      let obj:User;
+
+      obj = new User(
         res.name,
         res.surname,
         res.email,
@@ -30,6 +33,10 @@ export class AuthService {
         res.birthday,
         res.message
       );
+
+      obj.token = res.token;
+
+      return obj;
     })
     .catch(error => {
       console.error('Error during login:', error);

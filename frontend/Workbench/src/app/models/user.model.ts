@@ -7,6 +7,7 @@ export class User {
     public phoneNumber:string;
     public birthday:string;
     public message:string;
+    public token:string = '';
     
   
     constructor(name: string, surname: string,email:string,role:string,phone_number:string,birthday:string,msg?:string) {
