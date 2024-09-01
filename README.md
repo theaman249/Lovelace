@@ -38,6 +38,36 @@
 2. type the command > node index.js <br>
 3. After the command is run, the server should be running on host: http://localhost:3000
 
+## Running the Frontend (Angular)
+
+**Installing Angular** <br>
+<p>Angular is needed for the front end</p>
+1. In the command prompt, run the command npm: install -g @angular/cli@17
+
+**Installing Tailwindcss** <br>
+<p>We are using tailwind as our frontend styling library</p>
+1. Run the command: npm install -D tailwindcss
+
+**Installing daisyui** <br>
+<p>another library we arer using is daisyui, which works with tailwindcss</p>
+1. Run the command: npm -i -D daisyui@latest
+
+**Installing ApexCharts** <br>
+<p>For charts we are using Apex Charts </p>
+1. Run the command: npm install apexcharts --save
+
+**Running the Frontend** <br>
+1.change directories to the Workbench subdirectory within the frontend subdirectory. This can be done using the command
+
+cd frontend/Workbench
+
+2. Once inside Workbench, run the command ng serve --open
+3. Should you get an error relating to a material component or ngx cookie, run the folloring commands
+
+npm add @angular/material
+
+npm install ngx-cookie
+
 # git cheatsheet
 
 **> git branch -a**

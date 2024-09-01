@@ -27,6 +27,12 @@
             </label>
             <input type="lastname" placeholder="Last Name" class="input input-bordered" formControlName = "surname" required />
           </div>
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text">Cellphone Number</span>
+            </label>
+            <input type="tel" placeholder="Phone Number" class="input input-bordered" formControlName = "Number" required />
+          </div>
           <span class="label-text">Role level</span>
           <select class="select select-bordered w-full max-w-xs">
             <option disabled selected>As an Admin or Employee?</option>
@@ -52,7 +58,7 @@
             <input type="password" placeholder="Re-enter password" class="input input-bordered" required />
           </div>
           <div class="form-control mt-6">
-            <button>Sign Up</button>
+            <button type="submit" class="btn btn-primary" routerLink="">Sign  Up</button>
           </div>
         </form>
       </div>
