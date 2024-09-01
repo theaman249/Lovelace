@@ -38,17 +38,18 @@ export class AuthService {
 
   }
 
-  public signupUser(name:string,surname:string,email:string,password:string,role:string,birthday:string):Promise<string>
+  public signupUser(name:string,surname:string,email:string,password:string,role:string,birthday:string,phone_number:string):Promise<string>
   {
     const url = 'http://localhost:3000/auth/register';
     
     const body = {
-      name:email,
+      name:name,
       surname: surname,
       email:email,
       password:password,
       role:role,
-      birthday:birthday
+      birthday:birthday,
+      phone_number:phone_number
     }
 
     return this.http.post<any>(url, body).toPromise()

@@ -9,8 +9,11 @@ const crypto = require('crypto');
 const nodemailer = require('nodemailer');
 
 router.post('/register', async (req, res) => {
+
     try {
         const { name, surname, email, password, role, phone_number, birthday } = req.body;
+
+        console.log(req.body);
 
         const sanitizedName = validator.escape(name.trim());
         const sanitizedSurname = validator.escape(surname.trim());
@@ -21,11 +24,6 @@ router.post('/register', async (req, res) => {
 
         if (!validator.isEmail(sanitizedEmail)) {
             return res.status(200).json({ message: 'Invalid email format' });
-        }
-
-        // Enforce strong password
-        if (!validator.isStrongPassword(password, { minLength: 8, minSymbols: 1, minNumbers: 1, minLowercase: 0, minUppercase: 0})) {
-            return res.status(200).json({ message: 'Password too weak' });
         }
      
         if(!['admin', 'employee'].includes(sanitizedRole)) {
@@ -58,12 +56,14 @@ router.post('/register', async (req, res) => {
             password: hashedPassword, 
             role: sanitizedRole, 
             phone_number: sanitizedPhoneNumber,
+            //reset_token:'null', //default
+            //token_expiration:'2023-12-25 14:30:00+02:00', //default
             birthday: sanitizedBirthday
         });
 
         await user.save();
 
-        res.status(201).json({ message: 'User registered successfully' });
+        res.status(201).json({ message: 'registration successful' });
     } 
     catch (error) {
         console.log(error);
@@ -116,6 +116,8 @@ router.post('/login', async (req, res) => {
     }
 });
 
+
+/*
 router.post('/forgotPassword', async (req, res) => {
     const { email } = req.body;
 
@@ -164,5 +166,5 @@ router.post('/resetPassword', async (req, res) => {
         res.status(500).json({ error: 'Internal server error' });
     }
 });
-
+*/
 module.exports = router;

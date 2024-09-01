@@ -166,9 +166,7 @@ const { Client } = require('pg');
                 password VARCHAR(100),
                 role VARCHAR(10),
                 phone_number VARCHAR(100),
-                birthday DATE,
-                reset_token VARCHAR(255),
-                token_expiration TIMESTAMPTZ
+                birthday DATE
             );
 
             CREATE TABLE IF NOT EXISTS hours_logged (

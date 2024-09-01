@@ -41,7 +41,7 @@ export class LoginComponent {
     private readonly snackBar: MatSnackBar,
     private readonly router:Router,
   ){
-    console.log('Help');
+    //console.log('Help');
   }
 
   loginForm = new FormGroup({
@@ -66,7 +66,7 @@ export class LoginComponent {
           console.log('Success');
           
           this.router.navigate(['Home']);
-          
+
         } else {
           this.snackBar.open('Login failed: ' + result.message);
           setTimeout(() => {

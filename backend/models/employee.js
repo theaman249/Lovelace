@@ -31,14 +31,14 @@ const Employee = sequelize.define('employees', {
     type: DataTypes.DATE,
     allowNull: false
   },
-  reset_token: {
-    type: DataTypes.STRING, 
-    allowNull: true 
-  },
-  token_expiration: {
-    type: DataTypes.DATE,
-    allowNull: true
-  }
+  // reset_token: {
+  //   type: DataTypes.STRING, 
+  //   allowNull: true 
+  // },
+  // token_expiration: {
+  //   type: DataTypes.DATE,
+  //   allowNull: true
+  // }
 }, {
   timestamps: false,
   createdAt: false,
