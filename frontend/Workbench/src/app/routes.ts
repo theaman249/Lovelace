@@ -30,7 +30,7 @@ const routes: Routes = [
         title: 'Office Bookings'
     },
     {
-        path: 'Profile',
+        path: 'Pp',
         component: ProfilePageComponent,
         title: 'Profile Page'
     },
