@@ -64,8 +64,13 @@ export class SignupComponent {
         console.log(result);
         if (result === 'registration successful') {
           console.log('Success');
+
+          this.snackBar.open('Welcome!');
+          setTimeout(() => {
+            this.snackBar.dismiss();
+          }, 5000);
           
-          //this.router.navigate(['login']);
+          this.router.navigate(['']);
 
         } 
         else {

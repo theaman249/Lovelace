@@ -55,6 +55,8 @@ export class LoginComponent {
   
     const email = formValues.email;
     const password = formValues.password;
+
+    console.log(password);
   
     if (email && password) {
       let result: User; // Correctly declare the variable using 'let'
@@ -64,6 +66,8 @@ export class LoginComponent {
         
         if (result.message === 'login successful') {
           console.log('Success');
+
+          
           
           this.router.navigate(['Home']);
 
