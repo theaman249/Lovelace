@@ -20,6 +20,7 @@ export class SignupComponent {
     surname: new FormControl(''),
     email: new FormControl(''),
     password: new FormControl(''),
+    birthday: new FormControl(''),
     role: new FormControl(''),
   })
 
@@ -30,6 +31,8 @@ export class SignupComponent {
     const surname = formValues.surname;
     const email = formValues.email;
     const password = formValues.password;
+    const birthday = formValues.birthday;
+    
     let role = '';
 
     if(formValues.role === 'Admin')

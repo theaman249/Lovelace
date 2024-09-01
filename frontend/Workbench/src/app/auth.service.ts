@@ -38,7 +38,7 @@ export class AuthService {
 
   }
 
-  public signupUser(name:string,surname:string,email:string,password:string,role:string):Promise<User>
+  public signupUser(name:string,surname:string,email:string,password:string,role:string,birthday:string):Promise<string>
   {
     const url = 'http://localhost:3000/auth/register';
     
@@ -48,23 +48,16 @@ export class AuthService {
       email:email,
       password:password,
       role:role,
+      birthday:birthday
     }
 
     return this.http.post<any>(url, body).toPromise()
     .then(res => {
-      return new User(
-        res.name,
-        res.surname,
-        res.email,
-        res.role,
-        res.phone_number,
-        res.birthday,
-        res.message
-      );
+      return res.message;
     })
     .catch(error => {
       console.error('Error during login:', error);
-      throw error; // Re-throw the error after logging or handling it
+      throw error;
     });
   }
 
