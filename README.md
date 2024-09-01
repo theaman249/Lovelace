@@ -123,7 +123,8 @@
 
 **Installing ApexCharts** <br>
 <p>For charts we are using Apex Charts </p>
-1. Run the command: npm install apexcharts --save <br><br>
+1. change directories into the Workbench subdirectory using the command cd frontend/Workbench
+1. Run the command inside the workbench folder: npm install ng-apexcharts apexcharts --save --legacy-peer-deps <br><br>
 
 **Installing The rest of the frontend packages and dependencies** <br>
 <p>All our packages and dependencies is really simple.</p>
