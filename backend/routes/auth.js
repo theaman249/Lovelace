@@ -56,8 +56,8 @@ router.post('/register', async (req, res) => {
             password: hashedPassword, 
             role: sanitizedRole, 
             phone_number: sanitizedPhoneNumber,
-            //reset_token:'null', //default
-            //token_expiration:'2023-12-25 14:30:00+02:00', //default
+            reset_token:'null', //default
+            token_expiration:'2023-12-25 14:30:00+02:00', //default
             birthday: sanitizedBirthday
         });
 
@@ -117,7 +117,7 @@ router.post('/login', async (req, res) => {
 });
 
 
-/*
+
 router.post('/forgotPassword', async (req, res) => {
     const { email } = req.body;
 
@@ -166,5 +166,5 @@ router.post('/resetPassword', async (req, res) => {
         res.status(500).json({ error: 'Internal server error' });
     }
 });
-*/
+
 module.exports = router;
