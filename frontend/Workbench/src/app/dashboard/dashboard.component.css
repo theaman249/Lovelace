@@ -1,0 +1,9 @@
+.line-through {
+    text-decoration: line-through;
+  }
+  .text-gray-500 {
+    color: #6b7280; /* Tailwind's gray-500 */
+  }
+  .cursor-pointer {
+    cursor: pointer;
+  }

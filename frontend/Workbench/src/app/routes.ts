@@ -7,6 +7,7 @@ import { OfficeBookingsComponent } from './office-bookings/office-bookings.compo
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import {DashboardComponent} from './dashboard/dashboard.component';
 
 const routes: Routes = [
     {
@@ -36,7 +37,7 @@ const routes: Routes = [
     },
     {
         path: 'Dashboard',
-        component: StatisticsComponent,
+        component: DashboardComponent,
         title: 'Dashboard'
     },
     {
