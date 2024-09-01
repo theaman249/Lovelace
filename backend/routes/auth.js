@@ -79,7 +79,7 @@ router.post('/login', async (req, res) => {
         const sanitizedEmail = validator.normalizeEmail(email);
 
         if (!validator.isEmail(sanitizedEmail)) {
-            return res.status(400).json({ error: 'Invalid email' });
+            return res.status(200).json({ error: 'Invalid email' });
         }
 
 
@@ -87,13 +87,13 @@ router.post('/login', async (req, res) => {
 
         // Check if user was found
         if (!user) {
-            return res.status(401).json({ error: 'Authentication failed: User not found' });
+            return res.status(200).json({ message: 'user not found' });
         }
 
         // Check password match
         const passwordMatch = await bcrypt.compare(password, user.password);
         if (!passwordMatch) {
-            return res.status(401).json({ error: 'Authentication failed: Incorrect password' });
+            return res.status(200).json({ message: 'incorrect password' });
         }
 
         const token = jwt.sign({ email: user.email, role: user.role }, jwtKey, { expiresIn: '5h' });
@@ -104,8 +104,8 @@ router.post('/login', async (req, res) => {
             role:user.role,
             email:email,
             phone_number:user.phone_number,
-            birthday:user.birthday
-
+            birthday:user.birthday,
+            message:'login successful'
         });
         console.log('Login successful');
 
