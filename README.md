@@ -68,6 +68,22 @@ npm add @angular/material
 
 npm install ngx-cookie
 
+**Should the routing not work for any reason please just add the link to the url manually as follows**<br>
+1. The base url should be 'localhost:4200', This should land you on the Login page.
+2. Clicking on the log in button should route you to the Home page, 
+3. Clicking on the Sign up text should route you to the Sign up page,
+4. Clicking on the Forgot Password text should route you to the Forgot Password page.
+5. Should this not work for whatever reason you can manually access any of the pages as follows:
+6. Add the name of the page to the end of the base url, preceeded by a '/', e.g. "localhost:4200/Home" where /Home is the name of the page.
+7. Here are the names of the individual pages:
+8. Login: This is just the base url, i.e. "localhost:4200"
+9 Signup: '/Signup'
+10. Forgot Password: '/Forgot'
+11. Home: '/Home'
+12. Profile: '/Pp'
+13. Personal Dashboard: '/Dashboard'
+14. Office Booking: '/Office' (Not working)
+
 # git cheatsheet
 
 **> git branch -a**
