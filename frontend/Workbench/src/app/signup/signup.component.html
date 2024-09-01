@@ -8,29 +8,29 @@
         </p>
       </div>
       <div class="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-        <form class="card-body">
+        <form [formGroup] = "signupForm" (ngSubmit) = "signup()" class="card-body">
           <div class="form-control">
             <label class="label">
               <span class="label-text">Email</span>
             </label>
-            <input type="email" placeholder="email" class="input input-bordered" required />
+            <input type="email" placeholder="email" class="input input-bordered" formControlName = "email" required />
           </div>
           <div class="form-control">
             <label class="label">
               <span class="label-text">First Name</span>
             </label>
-            <input type="firstname" placeholder="First Name" class="input input-bordered" required />
+            <input type="firstname" placeholder="First Name" class="input input-bordered" formControlName = "name" required />
           </div>
           <div class="form-control">
             <label class="label">
               <span class="label-text">Last Name</span>
             </label>
-            <input type="lastname" placeholder="Last Name" class="input input-bordered" required />
+            <input type="lastname" placeholder="Last Name" class="input input-bordered" formControlName = "surname" required />
           </div>
           <span class="label-text">Role level</span>
           <select class="select select-bordered w-full max-w-xs">
-            <option disabled selected>As an Exec or Employee?</option>
-            <option>Exec</option>
+            <option disabled selected>As an Admin or Employee?</option>
+            <option>Admin</option>
             <option>Employee</option>
           </select>
           <div class="form-control">
@@ -43,7 +43,7 @@
             <label class="label">
               <span class="label-text">Password</span>
             </label>
-            <input type="password" placeholder="password" class="input input-bordered" required />
+            <input type="password" placeholder="password" class="input input-bordered" formControlName = "password" required />
           </div>
           <div class="form-control">
             <label class="label">
@@ -52,7 +52,7 @@
             <input type="password" placeholder="Re-enter password" class="input input-bordered" required />
           </div>
           <div class="form-control mt-6">
-            <a routerLink="" class="btn btn-primary"><button>Sign Up</button></a>
+            <button>Sign Up</button>
           </div>
         </form>
       </div>
