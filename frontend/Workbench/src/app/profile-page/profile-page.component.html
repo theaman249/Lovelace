@@ -1,0 +1,98 @@
+<div>
+<header>
+  <div class="navbar bg-base-100">
+      <div class="flex-1">
+        <a class="btn btn-ghost text-xl" routerLink="Home">Workbench</a>
+      </div>
+      <div class="flex-none gap-2">
+        <div class="form-control">
+          <input type="text" placeholder="Search" class="input input-bordered w-24 md:w-auto" />
+        </div>
+        <div class="dropdown dropdown-end">
+          <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
+            <div class="w-10 rounded-full">
+              <img
+                alt="Tailwind CSS Navbar component"
+                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+            </div>
+          </div>
+          <ul
+            tabindex="0"
+            class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+            <li><a>Settings</a></li>
+            <li><a routerLink="">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+  </div>
+</header>
+<body>
+  <main class="main">
+      <div class="bg-base-200 min-h-screen">
+      <div class="breadcrumbs text-sm">
+        <ul>
+          <li><a routerlink="Home">Home</a></li>
+          <li>Profile</li>
+        </ul>
+      </div>
+      <div class=" bg-base-200 min-h-screen">
+        <div class="hero-content flex-col lg:flex-row-reverse">
+          <img
+            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+            class="max-w-sm rounded-lg shadow-2xl " />
+          <div>
+            <h1 class="text-5xl font-bold">Spidey Parker's Account</h1>
+            <br>
+            <label class="input input-bordered flex items-center gap-10">
+              First Name
+              <input type="text" class="grow" placeholder="Spidey" />
+            </label>
+            <br>
+            <label class="input input-bordered flex items-center gap-2">
+              Second Name
+              <input type="text" class="grow" placeholder="Parker" />
+            </label>
+            <br>
+            <label class="input input-bordered flex items-center gap-2">
+              Email
+              <input type="text" class="grow" placeholder="spideyflies@gmail.com" />
+            </label>
+            <br>
+            <label class="input input-bordered flex items-center gap-2">
+              Role
+              <input type="text" class="grow" placeholder="Photographer" />
+            </label>
+            <br>
+            <label class="input input-bordered flex items-center gap-2">
+              Cellphone Number
+              <input type="text" class="grow" placeholder="(+27) 65 974 9558" />
+            </label>
+            <br>
+            <label class="input input-bordered flex items-center gap-2">
+              Password
+              <input type="password" class="grow" placeholder="" />
+            </label>
+            <br>
+            <label class="input input-bordered flex items-center gap-2">
+              ReType Password
+              <input type="password" class="grow" placeholder="" />
+            </label>
+            <br>
+            <label class="form-control w-full max-w-xs">
+              <div class="label">
+                <span class="label-text">Change Profile Picture</span>
+              </div>
+              <input type="file" class="file-input file-input-bordered w-full max-w-xs" />
+              <div class="label">
+              </div>
+            </label>
+            <br>
+            <button class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+
+</div>
