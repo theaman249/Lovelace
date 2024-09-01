@@ -2,7 +2,7 @@
   <header>
     <div class="navbar bg-base-100">
       <div class="flex-1">
-        <a class="btn btn-ghost text-xl">Workbench</a>
+        <a class="btn btn-ghost text-xl" routerLink="Home">Workbench</a>
       </div>
       <div class="flex-none gap-2">
         <div class="form-control">
@@ -20,13 +20,13 @@
             tabindex="0"
             class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
             <li>
-              <a class="justify-between">
+              <a class="justify-between" routerLink="Pp">
                 Profile
                 <span class="badge">New</span>
               </a>
             </li>
             <li><a>Settings</a></li>
-            <li><a>Logout</a></li>
+            <li><a routerLink="">Logout</a></li>
           </ul>
         </div>
       </div>
@@ -79,7 +79,7 @@
   
   
     <div class="btm-nav">
-      <button class="active" href="/frontend/Workbench/src/app/app.component.html">
+      <button class="active" routerLink="Home">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           class="h-5 w-5"
