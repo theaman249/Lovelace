@@ -62,7 +62,7 @@
 
 #### 3rd Year Information Knowledge Systems student at the University Of Pretoria
 
-#### Favourite Language(s): Java, dart
+#### Favourite Language(s): Java, C++, Javascript
 
 <br>
 <br>
@@ -156,6 +156,52 @@ npm install ngx-cookie
 12. Profile: '/Pp'
 13. Personal Dashboard: '/Dashboard'
 14. Office Booking: '/Office' (Not working)
+
+
+# Our solutions
+
+## Security
+
+<p>To enhance security, we implemented the following features to ensure security
+for employee data and the system as a whole</p>
+
+1. Token-based access control: We used JWT Tokens for our token-based-access control.
+<p>The tokens were primarily used to protect our endpoints from any unauthorized access. Only
+registered users within our system may access these endpoints.</p>
+
+<p>The tokens were implemented as middleware between the client and the endpoint. An unauthorized 
+exception would be thrown if a user attempted to connect without a JWT token</p>
+
+2. Role-based access control:
+<p>We used a Role-based access control mechanism to prevent unauthorised access to admin endpoints. This was just 
+another layer of security on top of the JWT middleware. In the event someone  has their token compromised, the role-based 
+access control measures will prevent that person from going any further.</p>
+
+3. Backend input validators:
+<p>We use validator functions in the backend to sanitize the data we receive from the outside world. It's very important that
+we validate the data that we are receiving as our code is very exposed to SQL and SQL Injection as a result.</p>
+
+4. Hashing passwords:
+<p>Our system doesn't store passwords as plain text but stores their hashes. Compared to encryption, hashing is not reversible, hence
+why it's usually most preferred </p>
+
+<p>The hash algorithm we use is Bcrypt. This is a robust algorithm that can withstand rainbow table attacks and Brute force attacks.
+Another perk of the algorithm is it's internal salting. This makes passwords hard to crack, as the salts are randomised.</p>
+
+## Features that work
+
+1. Registration: new users can register and choose their roles.
+2. Login: existing users can login and continue with their progress.
+3. View workhours: Users can view their weekly workhours on our dashboard.
+4. Password reset and recovery works as well.
+
+## Features that don't work
+
+1. The profile page and updating of details: The routes broke at some point and we were unable to navigate to some of the pages.
+2. Number of hours worked tracker: The function isn't plugged into the database. Meaning the user is viewing a static number.
+
+
+
 
 # git cheatsheet
 
