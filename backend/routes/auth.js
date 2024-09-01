@@ -20,24 +20,24 @@ router.post('/register', async (req, res) => {
         const sanitizedBirthday = validator.trim(birthday);
 
         if (!validator.isEmail(sanitizedEmail)) {
-            return res.status(400).json({ error: 'Invalid email format' });
+            return res.status(200).json({ message: 'Invalid email format' });
         }
 
         // Enforce strong password
         if (!validator.isStrongPassword(password, { minLength: 8, minSymbols: 1, minNumbers: 1, minLowercase: 0, minUppercase: 0})) {
-            return res.status(400).json({ error: 'Password too weak' });
+            return res.status(200).json({ message: 'Password too weak' });
         }
      
         if(!['admin', 'employee'].includes(sanitizedRole)) {
-            return res.status(400).json({ error: 'Invalid role'});
+            return res.status(200).json({ message: 'Invalid role'});
         }
 
         if (!validator.isMobilePhone(sanitizedPhoneNumber)) {
-            return res.status(400).json({ error: 'Invalid phone number format' });
+            return res.status(200).json({ message: 'Invalid phone number format' });
         }
 
         if (!validator.isDate(sanitizedBirthday, { format: 'YYYY-MM-DD'})) {
-            return res.status(400).json({ error: 'Invalid date format' });
+            return res.status(200).json({ message: 'Invalid date format' });
         }
 
 
@@ -46,7 +46,7 @@ router.post('/register', async (req, res) => {
         const existingNumber = await Employee.findOne({ where: { phone_number: sanitizedPhoneNumber } });
 
         if (existingEmail || existingNumber) {
-            return res.status(400).json({ error: 'User already exists' });
+            return res.status(200).json({ message: 'User already exists' });
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);
